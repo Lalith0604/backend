@@ -29,9 +29,7 @@ const db = mysql.createConnection({
     user: process.env.DB_USER || 'your-db-username',
     password: process.env.DB_PASSWORD || 'your-db-password',
     database: process.env.DB_NAME || 'your-database-name',
-    ssl: {
-        rejectUnauthorized: false
-    }
+    
 multipleStatements: true
 });
 
