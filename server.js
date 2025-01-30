@@ -32,12 +32,15 @@ const db = mysql.createConnection({
     ssl: {
         rejectUnauthorized: false
     }
+multipleStatements: true
 });
 
-
 db.connect((err) => {
-    if (err) throw err;
-    console.log('Connected to MySQL Database.');
+    if (err) {
+        console.error('Database connection failed: ' + err.stack);
+        return;
+    }
+    console.log('Connected to Google Cloud MySQL.');
 });
 
 // Form submission route
