@@ -21,13 +21,18 @@ app.get('/', (req, res) => {
   });
 
 // MySQL connection
+
 const db = mysql.createConnection({
-    host: process.env.DB_HOST||'127.0.0.1',
-    port: process.env.DB_PORT ,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    host: process.env.DB_HOST || 'YOUR_CLOUD_SQL_PUBLIC_IP',
+    port: process.env.DB_PORT || 3306,  // Default MySQL port
+    user: process.env.DB_USER || 'your-db-username',
+    password: process.env.DB_PASSWORD || 'your-db-password',
+    database: process.env.DB_NAME || 'your-database-name',
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
+
 
 db.connect((err) => {
     if (err) throw err;
